@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bigger Blanket</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F7F4EE;--card:#FFFFFF;--text:#1F2A26;--muted:#4F5D57;--accent:#2F6B58;--line:#C9D3CD;--soft:#E9E0F3;--track:#DDE5E0;--gray:#8A918D;--btn:#5B3FB0;--tint:#E3EEE9;--bg2:#F0E9FA;--shadow:0 1px 2px rgba(31,42,38,.06),0 8px 22px rgba(31,42,38,.07);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#171B19;--card:#242A27;--text:#EEF2EF;--muted:#AEB9B3;--accent:#6FC0A5;--line:#46524C;--soft:#2E2A3C;--track:#3A4440;--tint:#2A3A34;--bg2:#1E2623;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.25)}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#171B19;--card:#242A27;--text:#EEF2EF;--muted:#AEB9B3;--accent:#6FC0A5;--line:#46524C;--soft:#2E2A3C;--track:#3A4440;--tint:#2A3A34;--bg2:#1E2623;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.25)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:linear-gradient(180deg,var(--bg2) 0,var(--bg) 320px) var(--bg) no-repeat;color:var(--text);font-family:'Nunito',system-ui,sans-serif;font-size:16px;line-height:1.35}
+#app{max-width:440px;margin:0 auto;padding:24px 20px 40px;display:flex;flex-direction:column;gap:14px}
+h1,h2,p{margin:0}
+.brand{font-size:26px;font-weight:800;color:var(--accent)}
+.muted{color:var(--muted);font-size:14px}
+.card{background:var(--card);border-radius:24px;padding:16px;box-shadow:var(--shadow)}
+button,input{font-family:inherit;font-size:16px;color:var(--text)}
+button{cursor:pointer}
+.btn{height:56px;border:0;border-radius:999px;background:linear-gradient(135deg,#6A4BCB,#5B3FB0);color:#FFFFFF;font-weight:800;font-size:17px;width:100%;box-shadow:0 6px 16px rgba(91,63,176,.3)}
+.btn2{height:48px;border:2px solid var(--accent);border-radius:999px;background:transparent;color:var(--accent);font-weight:800;width:100%}
+.link{background:none;border:0;color:var(--muted);font-weight:700;min-height:44px;padding:0 8px}
+.row{display:flex;gap:8px}
+.chip{flex:1;min-height:44px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-weight:700}
+.chip[aria-pressed="true"]{border:2px solid var(--accent);background:var(--tint)}
+input[type=text],input[type=number]{width:100%;box-sizing:border-box;height:48px;border:1px solid var(--line);border-radius:12px;padding:0 14px;background:var(--card);font-weight:700}
+label{display:block;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:4px}
+.bar{height:10px;border-radius:999px;background:var(--track);overflow:hidden}
+.bar i{display:block;height:10px;border-radius:999px;background:linear-gradient(90deg,var(--accent),#7A55C4)}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tile{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px;border:1px solid var(--line);border-radius:14px;background:var(--card);font-weight:700;font-size:14px}
+.tile[aria-pressed="true"]{border:3px solid var(--accent);padding:8px;transform:rotate(-1.5deg)}
+.top{display:flex;justify-content:space-between;align-items:center}
+.note{background:var(--soft);border-radius:14px;padding:12px 14px;font-size:14px}
+.pop{transform-box:fill-box;transform-origin:center;animation:pop .6s ease both}
+@keyframes pop{0%{transform:scale(.2);opacity:0}70%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+@media (prefers-reduced-motion: reduce){.pop{animation:none}}
+.sr{position:absolute;left:-9999px}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#5B3FB0,#C13570);color:#FFFFFF;border-radius:28px;padding:22px;box-shadow:var(--shadow)}
+.hero .logo,.hero p{position:relative}
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;margin:-8px -20px 0;padding:8px 20px;background:var(--bg);background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(8px)}
+.back{display:inline-flex;align-items:center;gap:6px;min-height:48px;padding:0 20px 0 12px;border:0;border-radius:999px;background:var(--card);box-shadow:var(--shadow);font-family:'Fredoka','Nunito',system-ui,sans-serif;font-weight:600;font-size:17px;color:var(--text);transition:transform .2s cubic-bezier(.34,1.56,.64,1)}
+.back:active{transform:scale(.95)}
+.msg{margin:0;font-family:'Fredoka','Nunito',system-ui,sans-serif;font-size:18px;font-weight:600;color:var(--accent);background:var(--tint);border-radius:18px;padding:12px 14px;animation:rise .45s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(8px) scale(.96)}}
+@media (prefers-reduced-motion: reduce){.msg{animation:none}}
+.dot{position:absolute;border-radius:6px;animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-6px) rotate(8deg)}}
+@media (prefers-reduced-motion: reduce){.dot{animation:none}}
+h1,h2,.brand,.btn,.btn2,.chip{font-family:'Fredoka','Nunito',system-ui,sans-serif}
+.hero p{color:#FFFFFF;font-size:15px;margin-top:8px}
+.hero .brand{color:#FFFFFF}
+.logo{display:flex;align-items:center;gap:10px}
+button:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.btn,.btn2,.chip,.tile,.bc{transition:transform .2s cubic-bezier(.34,1.56,.64,1)}
+.btn:active,.btn2:active,.chip:active,.tile:active,.bc:active{transform:scale(.95)}
+.thumb{flex:none;border-radius:8px}
+.bc{display:flex;gap:12px;align-items:center;width:100%;text-align:left;border:0;background:var(--card);border-radius:20px;padding:14px;box-shadow:var(--shadow)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="sq" viewBox="0 0 35 35"><rect x="1" y="1" width="33" height="33" rx="5" fill="currentColor" fill-opacity="0.16" stroke="currentColor" stroke-width="2"/><rect x="7" y="7" width="21" height="21" rx="3" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 2"/><rect x="13" y="13" width="9" height="9" rx="2" fill="currentColor"/></symbol></defs></svg>
+<main id="app"></main>
+<script>
+var KEY="bb_v1",GRAY="#8A918D";
+var FACE=["..YYYYYY..",".YYYYYYYY.","YYBYYYYBYY","YYBYYYYBYY","YYYYYYYYYY","YBYYYYYYBY","YYBYYYYBYY","YYYBBBBYYY",".YYYYYYYY.","..YYYYYY.."];
+var HEART=["..........",".RRR..RRR.","RRRRRRRRRR","RRRRRRRRRR","RRRRRRRRRR",".RRRRRRRR.","..RRRRRR..","...RRRR...","....RR....",".........."];
+var SUN=["....OO....","..O.YY.O..","...YYYY...","O.YYYYYY.O","OOYYYYYYOO","OOYYYYYYOO","O.YYYYYY.O","...YYYY...","..O.YY.O..","....OO...."];
+var CL=["#2F6B58","#7A55C4","#C98A1B","#C25B3F","#3F7DB5","#5E9A82"];
+var DES={
+face:{n:"Happy Face",p:FACE,c:{Y:"#F2C230",B:"#6B3E12",".":"#9CC3E6"}},
+heart:{n:"Heart",p:HEART,c:{R:"#D9475C",".":"#F2B8C0"}},
+sun:{n:"Sunshine",p:SUN,c:{Y:"#F2C230",O:"#E8762C",".":"#9CC3E6"}},
+classic:{n:"Classic Squares"}};
+var S={blankets:[]};
+var ui={view:"home",id:null,f:{name:"Emergency Blanket",goal:"1000",design:"face",colors:null},amt:"",msg:"",newN:0,del:false,err:"",ren:false,rn:"",rg:"",rd:"face",rc:null};
+function load(){try{var r=localStorage.getItem(KEY);if(r){var d=JSON.parse(r);if(d&&d.blankets)S=d}}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function money(n){return n.toLocaleString("en-US",{style:"currency",currency:"USD",minimumFractionDigits:n%1?2:0,maximumFractionDigits:2})}
+function saved(b){return b.dep.reduce(function(a,d){return a+d.a},0)}
+function filled(b){return Math.min(100,Math.floor(saved(b)/b.goal*100+1e-9))}
+function rng(s){return function(){s|=0;s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function order(seed){var o=[],i,r=rng(seed);for(i=0;i<100;i++)o.push(i);for(i=99;i>0;i--){var j=Math.floor(r()*(i+1)),t=o[i];o[i]=o[j];o[j]=t}return o}
+function cols(b){if(b.design==="photo")return b.colors;var out=[],d=DES[b.design],i,r,c;for(i=0;i<100;i++){r=Math.floor(i/10);c=i%10;out.push(d.p?d.c[d.p[r][c]]:CL[(r+c)%6])}return out}
+function grid(b,newN,size){var n=filled(b),o=order(b.seed),f={},w={},cs=cols(b),i,out="";for(i=0;i<n;i++)f[o[i]]=1;for(i=Math.max(0,n-newN);i<n;i++)w[o[i]]=i-Math.max(0,n-newN)+1;
+for(i=0;i<100;i++){var x=(i%10)*35,y=Math.floor(i/10)*35,u='<use href="#sq" width="35" height="35" x="'+x+'" y="'+y+'" style="color:'+(f[i]?cs[i]:GRAY)+'"/>';out+=w[i]?'<g class="pop" style="animation-delay:'+((w[i]-1)*35)+'ms">'+u+'</g>':u}
+return '<svg viewBox="0 0 350 350" width="'+size+'" height="'+size+'" style="max-width:100%;height:auto;border-radius:16px;background:var(--card);box-shadow:0 8px 24px rgba(31,42,38,.14)" role="img" aria-label="'+esc(b.name)+' blanket, '+n+' of 100 squares in color">'+out+'</svg>'}
+function mini(cs,size){var o="",i;for(i=0;i<100;i++)o+='<rect x="'+(i%10)*12+'" y="'+Math.floor(i/10)*12+'" width="11" height="11" rx="2" fill="'+cs[i]+'"/>';return '<svg class="thumb" viewBox="0 0 120 120" width="'+size+'" height="'+size+'" aria-hidden="true">'+o+'</svg>'}
+function gray(){var a=[],i;for(i=0;i<100;i++)a.push(GRAY);return a}
+function find(id){return S.blankets.filter(function(b){return b.id===id})[0]}
+function curCols(d){if(d==="photo")return ui.f.colors||gray();return cols({design:d})}
+function welcome(){var demo={design:"face",seed:7,goal:100,name:"Welcome",dep:[{a:38}]},dots='<span class="dot" aria-hidden="true" style="width:18px;height:18px;right:22px;top:16px;background:#F2C230"></span><span class="dot" aria-hidden="true" style="width:12px;height:12px;left:26px;top:48px;background:#9CC3E6;animation-delay:.5s"></span><span class="dot" aria-hidden="true" style="width:14px;height:14px;right:36px;bottom:18px;background:#F2B8C0;animation-delay:1s"></span>';
+function row(n,t){return '<div style="display:flex;gap:12px;align-items:center"><span style="flex:none;width:30px;height:30px;border-radius:999px;background:var(--accent);color:var(--card);display:flex;align-items:center;justify-content:center;font-weight:800">'+n+'</span><span style="font-weight:700">'+t+'</span></div>'}
+return '<div class="hero" style="text-align:center;padding:26px 20px">'+dots+'<div class="logo" style="justify-content:center">'+mini(cols({design:"classic"}),34)+'<span class="brand">Bigger Blanket</span></div><p>Tiny savings. Big comfort.</p></div><div style="display:flex;justify-content:center">'+grid(demo,38,260)+'</div><h2 style="font-size:28px;line-height:1.15;text-align:center">Save a little.<br>Watch it bloom.</h2><div class="card" style="display:flex;flex-direction:column;gap:12px">'+row(1,"Pick a goal and a design")+row(2,"Add money whenever you can")+row(3,"Watch your blanket fill with color")+'</div><button class="btn" data-a="start">Get started</button><p class="muted" style="text-align:center">Test version. No real money moves, and your blankets stay on this device.</p>'}
+function home(){var h='<div class="hero"><span class="dot" aria-hidden="true" style="width:18px;height:18px;right:22px;top:16px;background:#F2C230"></span><span class="dot" aria-hidden="true" style="width:12px;height:12px;right:60px;top:52px;background:#9CC3E6;animation-delay:.5s"></span><span class="dot" aria-hidden="true" style="width:14px;height:14px;right:30px;bottom:18px;background:#F2B8C0;animation-delay:1s"></span><div class="logo">'+mini(cols({design:"classic"}),34)+'<span class="brand">Bigger Blanket</span></div><p>Tiny savings. Big comfort. Every deposit stitches a little color into your blanket.</p></div>';
+if(!S.blankets.length){h+='<div class="card" style="text-align:center"><div style="display:flex;justify-content:center;margin-bottom:10px">'+mini(cols({design:"face"}),140)+'</div><h2 style="font-size:20px">Start your first blanket</h2><p class="muted" style="margin-top:4px">Pick a goal and a design. It stays black and white until you save.</p></div>'}
+else{var act2=S.blankets.filter(function(b){return filled(b)<100}).length,tot=S.blankets.reduce(function(a,b){return a+saved(b)},0),goals=S.blankets.reduce(function(a,b){return a+b.goal},0);h+='<div class="card" style="display:flex;justify-content:space-between;gap:8px;text-align:center"><div style="flex:1"><div style="font-size:26px;font-weight:800">'+act2+'</div><div class="muted">Active</div></div><div style="flex:1"><div style="font-size:26px;font-weight:800">'+(S.blankets.length-act2)+'</div><div class="muted">Finished</div></div><div style="flex:1.5"><div style="font-size:26px;font-weight:800">'+money(tot)+'</div><div class="muted">Saved of '+money(goals)+'</div></div></div>';S.blankets.forEach(function(b){var p=filled(b);h+='<button class="bc" data-a="open" data-id="'+b.id+'">'+mini(filled(b)?cols(b).map(function(c,i){return order(b.seed).indexOf(i)<p?c:GRAY}):gray(),64)+'<span style="flex:1"><span style="display:flex;justify-content:space-between;font-weight:800"><span>'+esc(b.name)+'</span><span>'+p+'%</span></span><span class="bar" style="display:block;margin:6px 0 4px"><i style="width:'+p+'%"></i></span><span class="muted">'+money(saved(b))+' of '+money(b.goal)+'</span></span></button>'})}
+h+='<button class="btn" data-a="new">New blanket</button><p class="muted" style="text-align:center">Test version. No real money moves, and your blankets stay on this device.</p>';return h}
+function form(){var f=ui.f,h=hdr("Back")+'<h2 style="font-size:24px">What are you covering?</h2>';
+h+='<div><label for="nm">Blanket name</label><input id="nm" type="text" maxlength="40" value="'+esc(f.name)+'"></div><div><label for="gl">Goal amount ($)</label><input id="gl" type="number" inputmode="decimal" min="10" value="'+esc(f.goal)+'"></div>';
+h+='<div><label>Design</label><div class="tiles">';["face","heart","sun","classic"].forEach(function(k){h+='<button class="tile" data-a="pick" data-d="'+k+'" aria-pressed="'+(f.design===k)+'">'+mini(cols({design:k}),88)+DES[k].n+'</button>'});
+h+='<button class="tile" data-a="pick" data-d="photo" aria-pressed="'+(f.design==="photo")+'">'+mini(f.colors||gray(),88)+'Your photo</button></div></div>';
+if(f.design==="photo")h+='<div class="note"><label for="ph" style="color:inherit">Choose a photo. We turn it into a 10 by 10 color mosaic, and the photo never leaves your device.</label><input id="ph" type="file" accept="image/*" style="margin-top:6px"></div>';
+if(ui.err)h+='<p role="alert" style="color:var(--accent);font-weight:800">'+esc(ui.err)+'</p>';
+return h+'<button class="btn" data-a="create">Create blanket</button>'}
+function hdr(t){return '<div class="hdr"><button class="back" data-a="home" aria-label="Back to my blankets"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>'+t+'</button></div>'}
+function etiles(){var h='<div><label>Design</label><div class="tiles">';["face","heart","sun","classic"].forEach(function(k){h+='<button class="tile" data-a="rpick" data-d="'+k+'" aria-pressed="'+(ui.rd===k)+'">'+mini(cols({design:k}),88)+DES[k].n+'</button>'});h+='<button class="tile" data-a="rpick" data-d="photo" aria-pressed="'+(ui.rd==="photo")+'">'+mini(ui.rc||gray(),88)+'Your photo</button></div></div>';if(ui.rd==="photo")h+='<div class="note"><label for="ph2" style="color:inherit">Choose a photo. It becomes a 10 by 10 color mosaic on your device.</label><input id="ph2" type="file" accept="image/*" style="margin-top:6px"></div>';return h}
+function blanket(b){var n=filled(b),sv=saved(b),per=b.goal/100,h=hdr("My blankets")+(ui.ren?'<div><label for="rn">Blanket name</label><input id="rn" type="text" maxlength="40" value="'+esc(ui.rn)+'"></div><div><label for="rg">Goal amount ($)</label><input id="rg" type="number" inputmode="decimal" min="10" value="'+esc(ui.rg)+'"></div>'+etiles()+'<div class="row"><button class="btn2" data-a="rensave">Save changes</button><button class="btn2" data-a="rencancel" style="border-color:var(--line);color:var(--muted)">Cancel</button></div>':'<div class="top"><h2 style="font-size:24px">'+esc(b.name)+'</h2><button class="link" data-a="ren">Edit</button></div>')+'';
+if(n>=100)h+='<div class="note" style="font-weight:800;font-size:16px">You did it! Your blanket is fully stitched.</div>';
+h+=grid(b,ui.newN,360)+'<div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font-size:30px;font-weight:800">'+n+'% stitched</div><div style="font-weight:700">'+money(sv)+' / '+money(b.goal)+'</div></div>';
+var rem=sv-n*per;if(n<100)h+='<div><div class="bar"><i style="width:'+Math.max(0,Math.min(100,rem/per*100))+'%"></i></div><p class="muted" style="margin-top:4px">Each square is '+money(Math.round(per*100)/100)+'. '+money(Math.round((per-rem)*100)/100)+' colors the next one.</p></div>';
+if(ui.msg)h+='<p role="status" class="msg">'+esc(ui.msg)+'</p>';
+if(n<100){h+='<div><label for="am">Add money ($)</label><input id="am" type="number" inputmode="decimal" min="1" value="'+esc(ui.amt)+'"></div><div class="row">';[10,25,50,100].forEach(function(v){h+='<button class="chip" data-a="chip" data-v="'+v+'" aria-pressed="'+(String(ui.amt)===String(v))+'">$'+v+'</button>'});h+='</div><button class="btn" data-a="add">Stitch it in</button>'}
+else h+='<button class="btn" data-a="new">Start a new blanket</button>';
+if(b.dep.length){h+='<div class="card"><div style="font-weight:800;margin-bottom:6px">Recent deposits</div>';b.dep.slice(-5).reverse().forEach(function(d){h+='<div style="display:flex;justify-content:space-between" class="muted"><span>'+new Date(d.t).toLocaleDateString("en-US",{month:"short",day:"numeric"})+'</span><span>'+money(d.a)+'</span></div>'});h+='<button class="link" data-a="undo">Undo last deposit</button></div>'}
+h+='<button class="link" data-a="del" style="color:var(--muted)">'+(ui.del?'Tap again to delete this blanket':'Delete blanket')+'</button>';return h}
+function render(){var a=document.getElementById("app"),b=ui.view==="blanket"?find(ui.id):null;if(ui.view==="blanket"&&!b)ui.view="home";
+a.innerHTML=ui.view==="welcome"?welcome():ui.view==="new"?form():ui.view==="blanket"?blanket(b):home();window.scrollTo(0,0)}
+function go(v,id){ui.view=v;ui.id=id||null;ui.msg="";ui.newN=0;ui.del=false;ui.err="";ui.amt="";ui.ren=false;render()}
+function confetti(){if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;var c=document.createElement("canvas");c.setAttribute("aria-hidden","true");c.style.cssText="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:99";var W=c.width=innerWidth,H=c.height=innerHeight,x=c.getContext("2d"),cl=["#F2C230","#E8762C","#D9475C","#5B3FB0","#3F7DB5","#2F6B58","#F2B8C0"],p=[],i;
+for(i=0;i<140;i++)p.push({x:W/2,y:H*0.35,vx:(Math.random()-.5)*16,vy:Math.random()*-14-4,s:6+Math.random()*7,r:Math.random()*6,vr:(Math.random()-.5)*.4,c:cl[i%cl.length]});
+document.body.appendChild(c);var t0=Date.now();
+(function f(){var t=Date.now()-t0;x.clearRect(0,0,W,H);p.forEach(function(q){q.vy+=.35;q.x+=q.vx;q.y+=q.vy;q.vx*=.99;q.r+=q.vr;x.save();x.translate(q.x,q.y);x.rotate(q.r);x.fillStyle=q.c;x.globalAlpha=Math.max(0,1-t/3200);x.fillRect(-q.s/2,-q.s/4,q.s,q.s/2);x.restore()});if(t<3200)requestAnimationFrame(f);else c.remove()})()}
+function act(a,d){var b=ui.id?find(ui.id):null;
+if(a==="start"){S.welcomed=true;save();ui.f={name:"Emergency Blanket",goal:"1000",design:"face",colors:null};go("new")}
+else if(a==="home")go("home");
+else if(a==="new"){ui.f={name:"Emergency Blanket",goal:"1000",design:"face",colors:null};go("new")}
+else if(a==="open")go("blanket",d.id);
+else if(a==="pick"){ui.f.design=d.d;ui.err="";render()}
+else if(a==="create"){var g=parseFloat(ui.f.goal),nm=ui.f.name.trim();if(!nm){ui.err="Give your blanket a name.";render();return}if(!(g>=10)){ui.err="Set a goal of at least $10.";render();return}if(ui.f.design==="photo"&&!ui.f.colors){ui.err="Choose a photo first, or pick another design.";render();return}
+var nb={id:"b"+Date.now(),name:nm,goal:g,design:ui.f.design,colors:ui.f.design==="photo"?ui.f.colors:null,seed:Math.floor(Math.random()*1e6),dep:[]};S.blankets.push(nb);save();go("blanket",nb.id)}
+else if(a==="chip"){ui.amt=d.v;render()}
+else if(a==="add"&&b){var v=parseFloat(ui.amt);if(!(v>0)){ui.msg="Enter an amount above $0.";ui.newN=0;render();return}var before=filled(b);b.dep.push({a:Math.round(v*100)/100,t:Date.now()});var nn=filled(b)-before;save();ui.amt="";ui.newN=nn;var enc=["Nice stitch!","Look at that color!","Cozy progress.","You are building something.","Little by little adds up.","Future you says thanks."],fb=filled(b),mm=[25,50,75].filter(function(m){return before<m&&fb>=m}).pop();ui.msg=fb>=100?"That finished it! Your blanket is complete.":(mm?(mm===50?"Halfway there! ":mm+"% stitched! "):"")+(nn>0?nn+(nn===1?" new square":" new squares")+" stitched in. ":"Saved! ")+enc[Math.floor(Math.random()*enc.length)];render();if(fb>=100&&before<100)confetti()}
+else if(a==="undo"&&b){b.dep.pop();save();ui.newN=0;ui.msg="Last deposit removed.";render()}
+else if(a==="ren"&&b){ui.ren=true;ui.rn=b.name;ui.rg=String(b.goal);ui.rd=b.design;ui.rc=b.colors;ui.newN=0;ui.msg="";render()}
+else if(a==="rpick"){ui.rd=d.d;render()}
+else if(a==="rencancel"){ui.ren=false;render()}
+else if(a==="rensave"&&b){var nm2=(ui.rn||"").trim(),g2=parseFloat(ui.rg);if(!nm2){ui.msg="Give your blanket a name.";render();return}if(!(g2>=10)){ui.msg="Set a goal of at least $10.";render();return}if(ui.rd==="photo"&&!ui.rc){ui.msg="Choose a photo first, or pick another design.";render();return}b.name=nm2;b.goal=g2;b.design=ui.rd;b.colors=ui.rd==="photo"?ui.rc:null;save();ui.ren=false;ui.newN=0;ui.msg="Changes saved.";render()}
+else if(a==="del"&&b){if(!ui.del){ui.del=true;render();return}S.blankets=S.blankets.filter(function(x){return x.id!==b.id});save();go("home")}}
+document.addEventListener("click",function(e){var t=e.target.closest("[data-a]");if(t)act(t.dataset.a,t.dataset)});
+document.addEventListener("input",function(e){var i=e.target.id;if(i==="nm")ui.f.name=e.target.value;else if(i==="gl")ui.f.goal=e.target.value;else if(i==="am")ui.amt=e.target.value;else if(i==="rn")ui.rn=e.target.value;else if(i==="rg")ui.rg=e.target.value});
+document.addEventListener("change",function(e){var pid=e.target.id;if((pid!=="ph"&&pid!=="ph2")||!e.target.files[0])return;var url=URL.createObjectURL(e.target.files[0]),im=new Image();
+im.onload=function(){var c=document.createElement("canvas"),x=c.getContext("2d"),s=Math.min(im.width,im.height);c.width=c.height=100;x.drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,100,100);var px=x.getImageData(0,0,100,100).data,out=[],r,cc,yy,xx,R,G,B;
+for(r=0;r<10;r++)for(cc=0;cc<10;cc++){R=G=B=0;for(yy=0;yy<10;yy++)for(xx=0;xx<10;xx++){var k=((r*10+yy)*100+cc*10+xx)*4;R+=px[k];G+=px[k+1];B+=px[k+2]}out.push("rgb("+Math.round(R/100)+","+Math.round(G/100)+","+Math.round(B/100)+")")}
+if(pid==="ph")ui.f.colors=out;else ui.rc=out;ui.err="";URL.revokeObjectURL(url);render()};
+im.onerror=function(){ui.err="That photo could not be read. Try a JPG or PNG.";URL.revokeObjectURL(url);render()};im.src=url});
+load();if(!S.welcomed&&!S.blankets.length)ui.view="welcome";render();
+</script>
+</body>
+</html>
